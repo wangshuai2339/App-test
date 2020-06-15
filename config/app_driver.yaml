@@ -1,0 +1,12 @@
+#appium与手机连接，启动App时，需要的参数。（每次换手机连接时，只需要改变“platfromVersion: 9         # 手机版本
+#”与“deviceName”这两个参数）
+
+platformName: Android      # 平台
+platfromVersion: 9         # 手机版本
+deviceName: d90c13e        # 设备名称（adb devices 获取）
+appPackage: com.memezhibo.android    # APK包名
+appActivity: com.memezhibo.android.activity.EntryActivity   # appActivity
+noReset: false              # 否清除session信息
+automationName: uiautomator2
+ip: 127.0.0.1              # ip
+port: 4723                 # 端口号
