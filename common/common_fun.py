@@ -2,6 +2,7 @@ from baseView.baseView import BaseView
 from common.desired_caps import appium_desired
 from selenium.common.exceptions import NoSuchElementException
 from selenium.webdriver.common.by import By
+import csv
 import logging
 logging.basicConfig(level=logging.INFO, format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
@@ -76,6 +77,19 @@ class Common(BaseView):
             self.find_element(*self.add_group).click()
             logging.info("add group")
 
+class CommonFuntions():
+    #  # 获取csv数据
+    def get_csv_datas(self,csv_file, csv_line):
+        with open(csv_file, "r", encoding="utf-8-sig") as f:
+            reader = csv.reader(f)
+            for index, row in enumerate(reader, 1):
+                if index == csv_line:
+                    return row
+
+
+
+
+
 
 
 
@@ -96,4 +110,6 @@ if __name__ == '__main__':
     logging.info("login success")
     com.check_allow()
     com.check_teenager()
+
+
 

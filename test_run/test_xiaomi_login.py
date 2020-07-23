@@ -7,6 +7,7 @@ sys.path.append(root_path)
 from test_case.test_xiaomi import TestXiaoMi
 from businessView.xiaomi_login import XiaoMi
 from common.desired_caps import appium_desired
+from common.common_fun import CommonFuntions
 import logging
 import pytest
 logging.basicConfig(level=logging.INFO,
@@ -17,7 +18,10 @@ logging.basicConfig(level=logging.INFO,
 def test_xiaomi_login():
     driver = appium_desired()
     com = XiaoMi(driver)
-    com.xiaomi('1088844433', 'xm13608428757ws')
+    csv_file = "../data/login_datas.csv"
+    xiaomi_name = CommonFuntions().get_csv_datas(csv_file, 2)[0]
+    xiaomi_pwd = CommonFuntions().get_csv_datas(csv_file, 2)[1]
+    com.xiaomi(xiaomi_name, xiaomi_pwd)
     com1 = TestXiaoMi(driver)
     com1.test_xiaomi()
 if __name__ == '__main__':

@@ -2,6 +2,7 @@ from businessView.xiaomi_login import XiaoMi
 from common.desired_caps import appium_desired
 from selenium.webdriver.common.by import By
 from common.common_fun import Common
+from common.common_fun import CommonFuntions
 import logging
 import pytest
 
@@ -17,8 +18,10 @@ class TestXiaoMi(Common):
         logging.info("personal center")
         slef.check_new_user()
         b = slef.find_element(By.XPATH,"//*[contains(@text, '么么号：')]").get_attribute("name")
-        print(b)
-        assert b == "么么号：78766179"
+        csv_file = "../data/login_assert_datas.csv"
+        xiaomi_assert = CommonFuntions().get_csv_datas(csv_file, 6)[0]
+        xiaomi_assert_id = "么么号：" + xiaomi_assert
+        assert b == xiaomi_assert_id
         logging.info("xiaomi login success")
 
 

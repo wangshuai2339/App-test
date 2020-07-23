@@ -2,6 +2,7 @@ from businessView.microblog_login import MicroBlog
 from common.desired_caps import appium_desired
 from selenium.webdriver.common.by import By
 from common.common_fun import Common
+from common.common_fun import CommonFuntions
 import logging
 import pytest
 
@@ -17,8 +18,10 @@ class TestMicroBlog(Common):
         logging.info("personal center")
         slef.check_new_user()
         b = slef.find_element(By.XPATH,"//*[contains(@text, '么么号：')]").get_attribute("name")
-        print(b)
-        assert b == "么么号：79956987"
+        csv_file = "../data/login_assert_datas.csv"
+        microblog_assert = CommonFuntions().get_csv_datas(csv_file, 3)[0]
+        microblog_assert_id = "么么号：" + microblog_assert
+        assert b == microblog_assert_id
         logging.info("MicroBlog login success")
 
 

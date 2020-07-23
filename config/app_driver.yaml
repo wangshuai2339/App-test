@@ -2,8 +2,8 @@
 #”与“deviceName”这两个参数）
 
 platformName: Android      # 平台
-platfromVersion: 9         # 手机版本
-deviceName: d90c13e        # 设备名称（adb devices 获取）
+platfromVersion: 8         # 手机版本
+deviceName: 192.168.31.235:7565        # 设备名称（adb devices 获取）
 appPackage: com.memezhibo.android    # APK包名
 appActivity: com.memezhibo.android.activity.EntryActivity   # appActivity
 noReset: false              # 否清除session信息

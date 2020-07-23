@@ -2,6 +2,7 @@ from businessView.username_login import UserName
 from common.desired_caps import appium_desired
 from selenium.webdriver.common.by import By
 from common.common_fun import Common
+from common.common_fun import CommonFuntions
 import logging
 import pytest
 
@@ -17,8 +18,11 @@ class TestUserName(Common):
         logging.info("personal center")
         slef.check_new_user()
         b = slef.find_element(By.XPATH,"//*[contains(@text, '么么号：')]").get_attribute("name")
-        print(b)
-        assert b == "么么号：55418083"
+        csv_file = "../data/login_assert_datas.csv"
+        username_assert = CommonFuntions().get_csv_datas(csv_file, 1)[0]
+        username_assert_id= "么么号：" + username_assert
+        # print(username_assert_id)
+        assert b == username_assert_id
         logging.info("username login success")
 
 

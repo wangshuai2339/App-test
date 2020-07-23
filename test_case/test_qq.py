@@ -2,6 +2,7 @@ from businessView.qq_login import QqLogin
 from common.desired_caps import appium_desired
 from selenium.webdriver.common.by import By
 from common.common_fun import Common
+from common.common_fun import CommonFuntions
 import logging
 import pytest
 
@@ -17,8 +18,10 @@ class TestQq(Common):
         logging.info("personal center")
         slef.check_new_user()
         b = slef.find_element(By.XPATH,"//*[contains(@text, '么么号：')]").get_attribute("name")
-        print(b)
-        assert b == "么么号：74170793"
+        csv_file = "../data/login_assert_datas.csv"
+        qq_assert = CommonFuntions().get_csv_datas(csv_file, 4)[0]
+        qq_assert_id = "么么号：" + qq_assert
+        assert b == qq_assert_id
         logging.info("qq login success")
 
 
